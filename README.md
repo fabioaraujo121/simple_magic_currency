@@ -37,7 +37,8 @@ The **default** value is **BRL** (example: **1999121.99 => R$ 1.999.121,99**)
 ### Supported Currencies
 
  - [x] BRL
- - [x] USD    
+ - [x] USD 
+ - [x] BTC    
 
 ## Contributing
 

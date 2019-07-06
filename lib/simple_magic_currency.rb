@@ -2,9 +2,10 @@ require "simple_magic_currency/version"
 
 module SimpleMagicCurrency
 	class Error < StandardError; end
-	BRL = {:delimiter => ".", :separator => ",", :unit => "R$", :precision => 2, :position => "before"}
-	USD = {:delimiter => ',', :separator => ".", :unit => "US$", :precision => 2, :position => "before"}
-  	# DEFAULT = USD.merge(:unit => "$")
+	BRL = {delimiter: ".", separator: ",", unit: "R$", precision: 2, position: "before"}
+	USD = {delimiter: ',', separator: ".", unit: "US$", precision: 2, position: "before"}
+    BTC = {delimiter: ',', separator: ".", unit: "BTC", precision: 6, position: "after"}
+  	# DEFAULT = USD.merge(unit: "$")
   	DEFAULT = BRL
 
   	module Number
