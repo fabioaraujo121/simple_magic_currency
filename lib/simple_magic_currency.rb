@@ -5,19 +5,17 @@ module SimpleMagicCurrency
 	BRL = {delimiter: ".", separator: ",", unit: "R$", precision: 2, position: "before"}
 	USD = {delimiter: ',', separator: ".", unit: "US$", precision: 2, position: "before"}
     BTC = {delimiter: ',', separator: ".", unit: "BTC", precision: 6, position: "after"}
-  	# DEFAULT = USD.merge(unit: "$")
-  	DEFAULT = BRL
 
   	module Number
-  		def to_currency(options = {})
+  		def to_currency(currency = nil, options = {})
   			number = self
-  			default   = SimpleMagicCurrency::DEFAULT.stringify_keys
-  			options   = default.merge(options.stringify_keys)
-  			precision = options["precision"] || default["precision"]
-  			unit      = options["unit"] || default["unit"]
-  			position  = options["position"] || default["position"]
-  			separator = precision > 0 ? options["separator"] || default["separator"] : ""
-  			delimiter = options["delimiter"] || default["delimiter"]
+  			default   = currency.nil? ? SimpleMagicCurrency::DEFAULT : currency
+  			options   = default.merge(options)
+  			precision = options[:precision] || default[:precision]
+  			unit      = options[:unit] || default[:unit]
+  			position  = options[:position] || default[:position]
+  			separator = precision > 0 ? options[:separator] || default[:separator] : ""
+  			delimiter = options[:delimiter] || default[:delimiter]
 
   			begin
   				parts = number.with_precision(precision).split('.')

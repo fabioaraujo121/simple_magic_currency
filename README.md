@@ -1,5 +1,5 @@
 
-# SimpleMagicCurrency
+# SimpleMagicCurrency @ 0.2.0
 
 This is a simple gem (really simple), to handle money formats (USD, BRL and so on).
 
@@ -18,21 +18,20 @@ And then execute:
 ## Usage
 
 1. Make sure your money attribute type is **Integer** or **Float** or **Decimal** or **BigDecimal**
-2. Just use the method `to_currency`
+2. Just use the method `to_currency` (when you've already setted DEFAULT)
+3. Or use `to_currency(SimpleMagicCurrency::BRL)` when you haven't setted default or want something different from default
 
 ### Example
 
     
     	product = Product.new(price: 19.99)
     	product.price.to_currency # => R$ 19,99
+    	product.price.to_currency(SimpleMagicCurrency::USD) # => US$ 19,99
+    	product.price.to_currency(SimpleMagicCurrency::BTC, {unit: "ETH"}) # => 19.990000 ETH
 
-### Default Currency
-The **default** value is **BRL** (example: **1999121.99 => R$ 1.999.121,99**)
-
-### Change Default Currency
-1. Go to your `/config/application.rb` file
-2. Within your Application class
-3. Add `SimpleMagicCurrency::DEFAULT = SimpleMagicCurrency::USD`, to use Dollar format, for example
+### Set Default Currency **Required**
+1. Create a file `/config/initializers/simple_magice_currency.rb` file
+2. Add `SimpleMagicCurrency::DEFAULT = SimpleMagicCurrency::USD`, to use Dollar format, for example
 
 ### Supported Currencies
 
