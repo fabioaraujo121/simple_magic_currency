@@ -1,7 +1,7 @@
 
-# SimpleMagicCurrency @ 0.2.0
+# SimpleMagicCurrency @ 0.2.1
 
-This is a simple gem (really simple), to handle money formats (USD, BRL and so on).
+This is a simple gem (really simple), to handle money formats (USD, BRL and BTC. You can set your own format.).
 
 ## Installation
 
@@ -17,12 +17,11 @@ And then execute:
 
 ## Usage
 
-1. Make sure your money attribute type is **Integer** or **Float** or **Decimal** or **BigDecimal**
-2. Just use the method `to_currency` (when you've already setted DEFAULT)
+1. Make sure your money attribute type is **Integer** or **Float** or **Decimal** or **BigDecimal** or **String**
+2. Just use the method `to_currency`
 3. Or use `to_currency(SimpleMagicCurrency::BRL)` when you haven't setted default or want something different from default
 
 ### Example
-
     
     	product = Product.new(price: 19.99)
     	product.price.to_currency # => R$ 19,99
@@ -36,8 +35,9 @@ And then execute:
 ### Supported Currencies
 
  - [x] BRL
- - [x] USD 
- - [x] BTC    
+ - [x] USD
+ - [x] BTC
+ - [x] Any other using the option params `to_currency(nil, {delimiter: ',', separator: '.', unit: 'US$', precision: '2', position: 'before'})`
 
 ## Contributing
 
